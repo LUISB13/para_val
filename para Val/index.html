@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para valeria, la chica linda</title>
+    <link rel="stylesheet" href="estilos/estilos.css">
+  </head>
+  <body>
+
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="img/shrek.jpg" alt="">
+        <div class="info">
+          <h2>Dato #1</h2>
+          <p>Aveces sere muy pendejo y hare estupideces, pero no creo que te deje de querer, porque si me hace sentir bonito como shrek le fue a buscar una flor a fiona solo porque era bonita. Y tu eres muy bonita</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="img/hipo y astris.jpg" alt="">
+        <div class="info">
+          <h2>Dato #2</h2>
+          <p>Reclamame si no te gusta algo, nada me dara mas tranquilidad que hables conmigo las cosas que te molestan.en lugar de que te alejes y pierda el ver tu sonrisa. porque asi como hipo, no tendre un dragon pero no dejaria de luchar por lo que vale la pena</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="img/player 2.jpg" alt="">
+        <div class="info">
+          <h2>Dato #3</h2>
+          <p>Te consentire como una niña chiquita, y como una malandra, te caere a besos y a coñazos, y cuando merezca un coñazo demelo que por algo es. Y aunque hagas trampa, me encaratira que fueras el player 2 en mi partida</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="img/hamburguesa.jpg" alt="">
+        <div class="info">
+          <h2>Dato #4</h2>
+          <p>Salgamos a comer jodamos y pasemosla chevere, pero no ocultes conmigo que te comes 4 hamburguesas, que yo si te preparo mas</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="img/flork.jpg" alt="">
+        <div class="info">
+          <h2>Dato #5</h2>
+          <p>Si quiero pasarmela contigo poruqe me haces feliz, quiero tener algo serio contigo, y la espera me mata jeje, pero como quiero decirte, puedo ser tu novio? quiero respetar lo que quieres. y enserio cuando te pones asi toda co tu sonrisa y tus locuras y la forma en que arrugas la nariz, es muy bonito. y ese culazo y cñ val me facinas y sacas mi peor lado jejey me gusta</p>
+        </div>
+      </div>
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+
+  </body>
+</html>
